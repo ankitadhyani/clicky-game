@@ -1,5 +1,13 @@
-.title {
-  width: 100%;
+
+
+.cHeading {
+  padding-top: 5px;
   text-align: center;
-  margin-bottom: 50px;
+  color: white;
+}
+
+.cScoreCard {
+  text-align: center;
+  width: 100%;
+  word-spacing: 20px;
 }

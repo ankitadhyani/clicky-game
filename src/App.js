@@ -13,18 +13,15 @@ class App extends React.Component {
     selectedCharactersListIds: []
   }
 
-  //SHUFFLE CARDS
+  //Shuffle the Avengers card before loading a game
   shuffleCharacters = () => {
-    const shuffledCharacterList = this.state.charactersList.sort(() => 0.5 - Math.random());
-
-    this.setState({
-      charactersList: shuffledCharacterList
-    });
+    return this.state.charactersList.sort(() => 0.5 - Math.random());
   };
 
 
-
+  //Function that triggeres when user selects a particular character
   handleSelectedCharacter = (characterId) => {
+
     console.log("Inside handleSelectedCharacter()");
     console.log("characterId: " + characterId);
     console.log("selectedCharactersListIds: " + this.state.selectedCharactersListIds);
@@ -37,7 +34,8 @@ class App extends React.Component {
       //Reset values
       this.setState({
         topScore: this.state.score, //Update topScore value to the latest score
-        score: 0, //Reset score to 0
+        score: 0, //Reset score to 0,
+        characterList: this.shuffleCharacters(),
         selectedCharactersListIds: [] //Reset selected character id array
       });
 
@@ -49,11 +47,12 @@ class App extends React.Component {
 
       this.setState({
         selectedCharactersListIds: newSelectedCharArray,
+        characterList: this.shuffleCharacters(),
         score: this.state.score + 1 //Increment score by 1
       });
 
-      console.log("Character id=" + characterId + " is now added to the array.");
-      console.log("selectedCharactersListIds: " + this.state.selectedCharactersListIds);
+      // console.log("Character id=" + characterId + " is now added to the array.");
+      // console.log("selectedCharactersListIds: " + this.state.selectedCharactersListIds);
 
     }
   }
@@ -63,15 +62,26 @@ class App extends React.Component {
 
     return (
       <div>
-        <div>
-          <h1>Clicky Game</h1>
-          <h1>Select a unique Avenger each time!</h1>
-          <h3>Score:{this.state.score} | Top Score:{this.state.topScore}</h3>
-        </div>
+        <header className="jumbotron jumbotron-fluid">
+
+          <div class="d-flex flex-wrap align-content-center cHeading"
+            style={{
+              backgroundImage: `url("./images/AvengersBgImg.jpg")`,
+              height:'300px'
+            }}
+            >
+            <h1>Clicky Game</h1>
+            <h2>Select a unique Avenger each time!</h2>
+          </div>
+          
+          <div className="cScoreCard">
+            <h3>Score: {this.state.score} | Top-Score: {this.state.topScore}</h3>
+          </div>
         
-          {/* {
-            this.shuffleCharacters()
-          } */}
+        </header>
+        
+
+
         <Wrapper>
           {
             this.state.charactersList.map(character => {
