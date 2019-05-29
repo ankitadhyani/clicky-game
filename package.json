@@ -2,6 +2,7 @@
   "name": "clicky-game",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ankitadhyani.github.io/clicky-game",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
@@ -16,7 +17,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://ankitadhyani.github.io/clicky-game",
+  
   "eslintConfig": {
     "extends": "react-app"
   },
